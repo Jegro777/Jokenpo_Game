@@ -1,4 +1,4 @@
-# Jokenpô (Pedra✊, Papel✋ ou Tesoura✌️) - Animated Edition
+# Jokenpô Edition (Pedra✊, Papel✋ ou Tesoura✌️) 
 
 | | |
 |:---:|:---:|
