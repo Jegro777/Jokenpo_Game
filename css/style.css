@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&display=swap');
+
+/* :root {
+  --azul: #3a56d4;
+  --azul-escuro: #2a3fa0;
+  --vermelho: #e03030;
+  --vermelho-escuro: #b02020;
+  --amarelo: #f5b400;
+  --fundo: #1a1a2e;
+  --fundo2: #16213e;
+  --branco: #ffffff;
+  --cinza: #8892b0;
+  --selecionado-glow-jogador: 0 0 0 3px #fff, 0 0 18px 4px #7eedff, 0 0 40px 8px #3a56d4;
+  --selecionado-glow-computador: 0 0 0 3px #fff, 0 0 18px 4px #ffb3b3, 0 0 40px 8px #e03030;
+} */
+
+:root {
+  --azul: #3a56d4;
+  --azul-escuro: #2a3fa0;
+  --vermelho: #e03030;
+  --vermelho-escuro: #b02020;
+  --amarelo: #f5b400;
+  --fundo: #1a1a2e;
+  --fundo2: #16213e;
+  --branco: #ffffff;
+  --cinza: #8892b0;
+  --selecionado-glow-jogador: 0 0 0 3px #fff, 0 0 18px 4px #7eedff, 0 0 40px 8px #3a56d4;
+  --selecionado-glow-computador: 0 0 0 3px #fff, 0 0 18px 4px #ffb3b3, 0 0 40px 8px #e03030;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  cursor: default;
+  user-select: none;
+}
+
+body {
+  background-color: var(--fundo);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(58,86,212,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(224,48,48,0.15) 0%, transparent 60%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#principal {
+  width: 100%;
+  max-width: 800px;
+  padding: 30px 20px;
+}
+
+/* TÍTULO */
+#titulo {
+  font-family: 'Bangers', cursive;
+  font-size: 52px;
+  letter-spacing: 4px;
+  text-align: center;
+  color: var(--branco);
+  text-shadow: 4px 4px 0 var(--amarelo), 6px 6px 0 rgba(0,0,0,0.3);
+  margin-bottom: 30px;
+  animation: titleDrop 0.6s cubic-bezier(.36,1.56,.64,1) both;
+}
+
+@keyframes titleDrop {
+  from { transform: translateY(-350px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+/* PLACAR */
+#placar {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* PAINEIS JOGADOR E COMPUTADOR */
+#jogador, #computador {
+  position: relative;
+  flex: 1;
+  padding: 24px 20px 28px;
+  color: var(--branco);
+  overflow: hidden;
+}
+
+#jogador {
+  background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+}
+
+#computador {
+  background: linear-gradient(135deg, var(--vermelho-escuro), var(--vermelho));
+}
+
+/* BOLA - brilho decorativo no canto */
+#jogador::before,
+#computador::before {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  opacity: 0.12;
+  top: -40px;
+  pointer-events: none;
+}
+
+#jogador::before  { background: white; left: -40px; }
+#computador::before { background: white; right: -40px; }
+
+/* NOMES */
+#jogador-nome,
+#computador-nome {
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+}
+
+#computador-nome {
+  text-align: right;
+}
+
+/* PONTOS */
+#jogador-pontos,
+#computador-pontos {
+  font-family: 'Bangers', cursive;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: 2px;
+  position: absolute;
+  top: 16px;
+  color: rgba(255,255,255,0.25);
+  transition: color 0.3s, transform 0.2s;
+}
+
+#jogador-pontos  { right: 20px; }
+#computador-pontos { left: 20px; }
+
+#jogador-pontos.pontuou,
+#computador-pontos.pontuou {
+  color: rgba(255,255,255,0.9);
+  transform: scale(1.2);
+}
+
+/* LISTA DE ESCOLHAS */
+#jogador-escolha,
+#computador-escolha {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding: 0;
+}
+
+#jogador-escolha li,
+#computador-escolha li {
+  display: flex;
+}
+
+/* BOTÕES / ÍCONES */
+#jogador-escolha a,
+#computador-escolha a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: transform 0.18s ease, background 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
+  cursor: pointer;
+  opacity: 1;
+}
+
+#jogador-escolha a:hover {
+  transform: scale(1.15) translateY(-4px);
+  background: rgba(255,255,255,0.25);
+  opacity: 0.7;
+}
+
+#jogador-escolha a img,
+#computador-escolha a img {
+  max-width: 44px;
+  pointer-events: none;
+}
+
+/* SELECIONADO — efeito diferente para jogador e computador */
+#jogador #jogador-escolha a.selecionado {
+  opacity: 1 !important;
+  transform: scale(1.22) translateY(-6px);
+  background: rgba(255,255,255,0.3);
+  box-shadow: var(--selecionado-glow-jogador);
+  animation: pulseAzul 0.8s ease infinite alternate;
+}
+
+#computador #computador-escolha a.selecionado {
+  opacity: 1 !important;
+  transform: scale(1.22) translateY(-6px);
+  background: rgba(255,255,255,0.3);
+  box-shadow: var(--selecionado-glow-computador);
+  animation: pulseVermelho 0.8s ease infinite alternate;
+}
+
+@keyframes pulseAzul {
+  from { box-shadow: 0 0 0 3px #fff, 0 0 12px 2px #7eedff, 0 0 28px 4px #3a56d4; }
+  to   { box-shadow: 0 0 0 3px #fff, 0 0 22px 8px #7eedff, 0 0 50px 14px #3a56d4; }
+}
+
+@keyframes pulseVermelho {
+  from { box-shadow: 0 0 0 3px #fff, 0 0 12px 2px #ffb3b3, 0 0 28px 4px #e03030; }
+  to   { box-shadow: 0 0 0 3px #fff, 0 0 22px 8px #ffb3b3, 0 0 50px 14px #e03030; }
+}
+
+/* VERSUS */
+#versus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--amarelo);
+  color: #1a1a2e;
+  font-family: 'Bangers', cursive;
+  font-size: 36px;
+  letter-spacing: 2px;
+  padding: 0 18px;
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  min-width: 54px;
+  box-shadow: inset -4px 0 12px rgba(0,0,0,0.1), inset 4px 0 12px rgba(0,0,0,0.1);
+}
+
+/* MENSAGEM */
+#mensagem {
+  background: linear-gradient(135deg, #2a2a4a, #1e1e38);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: var(--branco);
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+  padding: 18px 24px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
