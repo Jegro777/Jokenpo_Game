@@ -1,7 +1,8 @@
-# ✊ Jokenpô (Pedra, Papel ou Tesoura) - Animated Edition
+# ✊ Jokenpô (Pedra✊, Papel✋ ou Tesoura✌️) - Animated Edition
 
-![Interface Dinâmica do Jogo](img/preview_project.png)
-![Interface Dinâmica do Jogo](img/preview_project01.png)
+| | |
+|:---:|:---:|
+| <img src="img/preview_project.png" width="450"> | <img src="img/preview_project01.png" width="500"> |
 
 ## 📝 Descrição do Projeto 
 
