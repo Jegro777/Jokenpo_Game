@@ -72,9 +72,12 @@ function deselecionar(tipo, escolha) {
 
 /* LÓGICA PRINCIPAL DO JOGO */
 function jogar(escolha) {
-  jogadorEscolha = escolha;
+  //Deselecionar uma escolha após selecionar uma outra
+  deselecionar('jogador', jogadorEscolha);
+  deselecionar('computador', computadorEscolha);
 
   // sortear a jogada do computador
+  jogadorEscolha = escolha;
   computadorEscolha = sortear(1, 3);
 
   // destacar as escolhas na tela
